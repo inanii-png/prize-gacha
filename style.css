@@ -1,18 +1,30 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
 
+/* ========================================
+   基本設定
+======================================== */
+
 :root {
   --bg: #0d0c1b;
   --panel: #19172d;
   --gold: #ffd477;
   --purple: #a98bff;
   --muted: #aaa8c2;
+  --border: #ffffff20;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
+  min-height: 100vh;
   background:
     radial-gradient(ellipse at 50% 0%, #302253 0%, transparent 55%),
     var(--bg);
@@ -20,11 +32,25 @@ body {
   font-family: 'Noto Sans JP', sans-serif;
 }
 
+button,
+audio {
+  font-family: inherit;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+/* ========================================
+   ヘッダー
+======================================== */
+
 .topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px max(5%, calc((100% - 1100px)/2));
+  padding: 20px max(5%, calc((100% - 1100px) / 2));
   border-bottom: 1px solid #ffffff18;
 }
 
@@ -34,7 +60,8 @@ body {
   color: var(--gold);
 }
 
-.demo-badge, .tag {
+.demo-badge,
+.tag {
   color: var(--gold);
   border: 1px solid #ffd47766;
   border-radius: 30px;
@@ -42,6 +69,10 @@ body {
   font-size: 11px;
   letter-spacing: 1px;
 }
+
+/* ========================================
+   メインコンテンツ
+======================================== */
 
 .container {
   width: min(1000px, 92%);
@@ -71,10 +102,17 @@ h1 span {
   text-shadow: 0 0 30px #ffd47755;
 }
 
-.intro, .description, .note {
+.intro,
+.description,
+.note {
   color: var(--muted);
   font-size: 13px;
+  line-height: 1.9;
 }
+
+/* ========================================
+   ガチャ本体
+======================================== */
 
 .gacha-panel {
   display: grid;
@@ -82,7 +120,7 @@ h1 span {
   gap: 35px;
   align-items: center;
   padding: 35px;
-  border: 1px solid #ffffff20;
+  border: 1px solid var(--border);
   border-radius: 24px;
   background: linear-gradient(135deg, #211e3c, #141326);
   box-shadow: 0 20px 80px #0004;
@@ -112,13 +150,13 @@ h1 span {
   position: relative;
   width: 120px;
   height: 120px;
+  flex-shrink: 0;
   margin: 30px auto;
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid #ffffffaa;
   background: #ff779b;
   box-shadow: 0 0 35px #ff83bd66;
-  transition: background .3s;
 }
 
 .capsule-top {
@@ -154,25 +192,35 @@ h1 span {
   letter-spacing: 2px;
 }
 
-.gacha-info h2 { font-size: 23px; }
+/* ========================================
+   ガチャの説明・ボタン
+======================================== */
+
+.gacha-info h2 {
+  font-size: 23px;
+  line-height: 1.5;
+}
+
 .price {
   font-size: 34px;
   color: var(--gold);
   font-weight: 900;
   margin: 20px 0;
 }
+
 .price span {
   font-size: 12px;
   color: var(--muted);
 }
 
-.draw-button, .secondary-button {
+.draw-button,
+.secondary-button {
   cursor: pointer;
   border: 0;
   border-radius: 12px;
   padding: 16px 20px;
   font-weight: 900;
-  transition: transform .2s, filter .2s;
+  transition: transform 0.2s, filter 0.2s;
 }
 
 .draw-button {
@@ -183,54 +231,26 @@ h1 span {
   box-shadow: 0 7px 25px #ffbd6440;
 }
 
-.draw-button:hover, .secondary-button:hover {
+.draw-button:hover,
+.secondary-button:hover {
   transform: translateY(-2px);
   filter: brightness(1.08);
 }
 
 .draw-button:disabled {
-  opacity: .5;
+  opacity: 0.5;
   cursor: wait;
+  transform: none;
 }
 
-.note { font-size: 11px; line-height: 1.8; }
-
-.prizes-section, .history-section { padding: 55px 0 10px; }
-
-.section-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 22px;
+.note {
+  font-size: 11px;
+  line-height: 1.8;
 }
 
-.section-heading h2, .history-section h2 { margin: 5px 0; }
-.count { color: var(--muted); font-size: 12px; }
-
-.prize-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-}
-
-.prize-card {
-  padding: 20px 10px;
-  border: 1px solid #ffffff20;
-  border-radius: 16px;
-  background: var(--panel);
-  text-align: center;
-}
-
-.prize-emoji { font-size: 42px; margin: 8px 0 15px; }
-.prize-rank { font-size: 11px; font-weight: 900; letter-spacing: 2px; }
-.prize-name { font-size: 13px; font-weight: 700; margin: 10px 0; }
-.probability { font-size: 11px; color: var(--muted); }
-
-.rank-S { color: #ffd477; }
-.rank-A { color: #ff8ecb; }
-.rank-B { color: #a98bff; }
-.rank-C { color: #7dcaff; }
-.rank-D { color: #c0c0d4; }
+/* ========================================
+   ガチャ結果
+======================================== */
 
 .result {
   margin-top: 30px;
@@ -239,12 +259,63 @@ h1 span {
   background: linear-gradient(145deg, #352452, #19162d);
   border: 1px solid var(--gold);
   border-radius: 20px;
-  animation: appear .5s ease-out;
+  box-shadow: 0 10px 40px #0003;
+  animation: appear 0.5s ease-out;
 }
 
-.result-emoji { font-size: 80px; margin: 15px 0; }
-.rarity { color: var(--gold); font-size: 20px; font-weight: 900; }
-.hidden { display: none; }
+.result h2 {
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
+.result-emoji {
+  font-size: 80px;
+  margin: 15px 0;
+}
+
+.rarity {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.rank-S {
+  --rank-color: #ffd477;
+}
+
+.rank-A {
+  --rank-color: #ff8ecb;
+}
+
+.rank-B {
+  --rank-color: #a98bff;
+}
+
+.rank-C {
+  --rank-color: #7dcaff;
+}
+
+.rank-D {
+  --rank-color: #c0c0d4;
+}
+
+.rarity.rank-S,
+.rarity.rank-A,
+.rarity.rank-B,
+.rarity.rank-C,
+.rarity.rank-D {
+  color: var(--rank-color);
+}
+
+#resultAudio {
+  display: block;
+  width: min(100%, 420px);
+  margin: 20px auto;
+}
+
+.hidden {
+  display: none !important;
+}
 
 .secondary-button {
   background: #302a49;
@@ -252,12 +323,120 @@ h1 span {
   margin-top: 10px;
 }
 
+/* ========================================
+   景品ラインナップ
+======================================== */
+
+.prizes-section,
+.history-section {
+  padding: 55px 0 10px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.section-heading h2,
+.history-section h2 {
+  margin: 5px 0;
+}
+
+.count {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.prize-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.prize-card {
+  min-width: 0;
+  padding: 22px 14px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel);
+  text-align: center;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow-wrap: anywhere;
+}
+
+.prize-card:hover {
+  transform: translateY(-4px);
+  border-color: #a98bff88;
+}
+
+.prize-card.rank-S {
+  border-top: 2px solid #ffd47788;
+}
+
+.prize-card.rank-A {
+  border-top: 2px solid #ff8ecb88;
+}
+
+.prize-card.rank-B {
+  border-top: 2px solid #a98bff88;
+}
+
+.prize-card .rarity {
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.prize-emoji {
+  font-size: 42px;
+  margin: 12px 0 15px;
+}
+
+.prize-card h3 {
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 10px 0;
+}
+
+.prize-description {
+  min-height: 3em;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.prize-probability {
+  font-size: 11px;
+  color: var(--gold);
+  margin-top: 15px;
+}
+
+/* ========================================
+   獲得履歴
+======================================== */
+
+.history-section h2 {
+  font-size: 20px;
+}
+
 .history-list {
   padding-left: 20px;
   color: var(--muted);
   font-size: 13px;
   line-height: 2.2;
+  overflow-wrap: anywhere;
 }
+
+.history-list li {
+  padding: 3px 0;
+}
+
+/* ========================================
+   フッター
+======================================== */
 
 footer {
   margin-top: 60px;
@@ -269,22 +448,105 @@ footer {
   letter-spacing: 2px;
 }
 
-.spinning { animation: spin .35s linear infinite; }
-@keyframes spin {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.12); }
-  100% { transform: rotate(360deg) scale(1); }
-}
-@keyframes appear {
-  from { opacity: 0; transform: translateY(15px) scale(.96); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+/* ========================================
+   アニメーション
+======================================== */
+
+.spinning {
+  animation: spin 0.35s linear infinite;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.12);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 動きを減らす設定が有効な端末への配慮 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========================================
+   スマートフォン対応
+======================================== */
+
 @media (max-width: 650px) {
-  .gacha-panel { grid-template-columns: 1fr; padding: 18px; gap: 22px; }
-  .machine { min-height: 260px; }
-  .prize-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .hero { padding-top: 40px; }
-  .topbar { padding: 17px 5%; }
-  .logo { font-size: 13px; }
+  .gacha-panel {
+    grid-template-columns: 1fr;
+    padding: 18px;
+    gap: 22px;
+  }
+
+  .machine {
+    min-height: 260px;
+  }
+
+  .prize-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .prize-card {
+    padding: 18px 10px;
+  }
+
+  .prize-card h3 {
+    font-size: 13px;
+  }
+
+  .hero {
+    padding-top: 40px;
+  }
+
+  .topbar {
+    padding: 17px 5%;
+    gap: 10px;
+  }
+
+  .logo {
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .demo-badge {
+    font-size: 9px;
+    padding: 6px 9px;
+  }
+
+  .result {
+    padding: 22px 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .prize-grid {
+    grid-template-columns: 1fr;
+  }
 }

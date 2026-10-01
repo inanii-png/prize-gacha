@@ -4,76 +4,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PRIZE GACHA</title>
+  <meta name="description" content="オリジナル楽曲が当たる無料ガチャ。何が出るかは運次第！">
+  <title>PRIZE GACHA | MUSIC EDITION</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <header class="topbar">
     <div class="logo">✦ PRIZE GACHA</div>
-    <div class="demo-badge">FREE DEMO</div>
+    <div class="demo-badge">FREE MUSIC GACHA</div>
   </header>
 
   <main class="container">
+
+    <!-- メインビジュアル -->
     <section class="hero">
       <p class="eyebrow">YOUR LUCKY MOMENT</p>
       <h1>何が出るかは、<br><span>運次第。</span></h1>
-      <p class="intro">カプセルを回して、豪華景品をゲットしよう！</p>
+      <p class="intro">
+        ガチャを回して、オリジナル楽曲をゲットしよう！
+      </p>
     </section>
 
+    <!-- ガチャ本体 -->
     <section class="gacha-panel">
       <div class="machine">
         <div class="machine-label">SPECIAL GACHA</div>
+
         <div class="capsule" id="capsule">
           <div class="capsule-top"></div>
           <div class="capsule-bottom"></div>
           <div class="capsule-shine"></div>
         </div>
-        <div class="machine-slot">▼ PRIZE SLOT ▼</div>
+
+        <div class="machine-slot">▼ MUSIC SLOT ▼</div>
       </div>
 
       <div class="gacha-info">
-        <div class="tag">LIMITED COLLECTION</div>
-        <h2>プレミアム景品ガチャ</h2>
-        <p class="description">何度でも遊べる無料デモガチャ！</p>
+        <div class="tag">ORIGINAL MUSIC COLLECTION</div>
+        <h2>オリジナル楽曲ガチャ</h2>
+        <p class="description">
+          何が当たるかはお楽しみ！自作曲との出会いを楽しもう。
+        </p>
+
         <div class="price">FREE <span>/ 1 PLAY</span></div>
-        <button id="drawButton" class="draw-button">
+
+        <button id="drawButton" class="draw-button" type="button">
           <span>✦</span> ガチャを回す
         </button>
-        <p class="note">※ デモ用です。実際の商品は発送されません。</p>
+
+        <p class="note">
+          ※ 無料デモです。景品は音源データの試聴です。
+        </p>
       </div>
     </section>
 
+    <!-- ガチャ結果 -->
     <section id="result" class="result hidden">
       <p class="eyebrow">CONGRATULATIONS!</p>
+
       <div id="resultRarity" class="rarity">S RANK</div>
-      <div id="resultEmoji" class="result-emoji">🎁</div>
-      <h2 id="resultName">景品名</h2>
-      <p id="resultDescription"></p>
-      <audio id="resultAudio" controls preload="none"></audio>
-      <button id="closeResult" class="secondary-button">閉じる</button>
+
+      <div id="resultEmoji" class="result-emoji">🎸</div>
+
+      <h2 id="resultName">楽曲名</h2>
+
+      <p id="resultDescription">
+        あなたに当たった特別な一曲！
+      </p>
+
+      <!-- 当選した曲の再生プレーヤー -->
+      <audio
+        id="resultAudio"
+        controls
+        preload="none"
+      >
+        お使いのブラウザは音声再生に対応していません。
+      </audio>
+
+      <button
+        id="closeResult"
+        class="secondary-button"
+        type="button"
+      >
+        閉じる
+      </button>
     </section>
 
+    <!-- 景品一覧 -->
     <section class="prizes-section">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">PRIZE COLLECTION</p>
-          <h2>景品ラインナップ</h2>
+          <p class="eyebrow">MUSIC COLLECTION</p>
+          <h2>楽曲ラインナップ</h2>
         </div>
-        <span id="prizeCount" class="count">全5種類</span>
+
+        <span id="prizeCount" class="count">全3種類</span>
       </div>
+
       <div id="prizeGrid" class="prize-grid"></div>
     </section>
 
+    <!-- 獲得履歴 -->
     <section class="history-section">
       <h2>最近の獲得履歴</h2>
+
       <ul id="historyList" class="history-list">
-        <li>まだ景品を引いていません。</li>
+        <li>まだ楽曲を引いていません。</li>
       </ul>
-      <button id="clearHistory" class="secondary-button">履歴をリセット</button>
+
+      <button
+        id="clearHistory"
+        class="secondary-button"
+        type="button"
+      >
+        履歴をリセット
+      </button>
     </section>
+
   </main>
 
-  <footer>PRIZE GACHA · FREE DEMO PROJECT</footer>
+  <footer>
+    PRIZE GACHA · ORIGINAL MUSIC EDITION
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
