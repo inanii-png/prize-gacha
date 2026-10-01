@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRIZE GACHA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">✦ PRIZE GACHA</div>
+    <div class="demo-badge">FREE DEMO</div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">YOUR LUCKY MOMENT</p>
+      <h1>何が出るかは、<br><span>運次第。</span></h1>
+      <p class="intro">カプセルを回して、豪華景品をゲットしよう！</p>
+    </section>
+
+    <section class="gacha-panel">
+      <div class="machine">
+        <div class="machine-label">SPECIAL GACHA</div>
+        <div class="capsule" id="capsule">
+          <div class="capsule-top"></div>
+          <div class="capsule-bottom"></div>
+          <div class="capsule-shine"></div>
+        </div>
+        <div class="machine-slot">▼ PRIZE SLOT ▼</div>
+      </div>
+
+      <div class="gacha-info">
+        <div class="tag">LIMITED COLLECTION</div>
+        <h2>プレミアム景品ガチャ</h2>
+        <p class="description">何度でも遊べる無料デモガチャ！</p>
+        <div class="price">FREE <span>/ 1 PLAY</span></div>
+        <button id="drawButton" class="draw-button">
+          <span>✦</span> ガチャを回す
+        </button>
+        <p class="note">※ デモ用です。実際の商品は発送されません。</p>
+      </div>
+    </section>
+
+    <section id="result" class="result hidden">
+      <p class="eyebrow">CONGRATULATIONS!</p>
+      <div id="resultRarity" class="rarity">S RANK</div>
+      <div id="resultEmoji" class="result-emoji">🎁</div>
+      <h2 id="resultName">景品名</h2>
+      <p id="resultDescription"></p>
+      <button id="closeResult" class="secondary-button">閉じる</button>
+    </section>
+
+    <section class="prizes-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PRIZE COLLECTION</p>
+          <h2>景品ラインナップ</h2>
+        </div>
+        <span id="prizeCount" class="count">全5種類</span>
+      </div>
+      <div id="prizeGrid" class="prize-grid"></div>
+    </section>
+
+    <section class="history-section">
+      <h2>最近の獲得履歴</h2>
+      <ul id="historyList" class="history-list">
+        <li>まだ景品を引いていません。</li>
+      </ul>
+      <button id="clearHistory" class="secondary-button">履歴をリセット</button>
+    </section>
+  </main>
+
+  <footer>PRIZE GACHA · FREE DEMO PROJECT</footer>
+  <script src="script.js"></script>
+</body>
+</html>
