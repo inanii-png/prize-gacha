@@ -4,114 +4,325 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="オリジナル楽曲が当たる無料ガチャ。何が出るかは運次第！">
+
+  <meta
+    name="description"
+    content="オリジナル楽曲が当たる無料ガチャ。何が出るかは運次第！"
+  >
+
+  <meta name="theme-color" content="#171025">
+
   <title>PRIZE GACHA | MUSIC EDITION</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+  <!-- ================================
+       ヘッダー
+  ================================= -->
+
   <header class="topbar">
-    <div class="logo">✦ PRIZE GACHA</div>
-    <div class="demo-badge">FREE MUSIC GACHA</div>
+    <a href="#" class="logo" aria-label="PRIZE GACHA ホーム">
+      ✦ デトロイト・ハセヨ・シティ
+    </a>
+
+    <div class="demo-badge">
+      ログイン
+    </div>
   </header>
+
 
   <main class="container">
 
-    <!-- メインビジュアル -->
+    <!-- ================================
+         メインビジュアル
+    ================================= -->
+
     <section class="hero">
       <p class="eyebrow">YOUR LUCKY MOMENT</p>
-      <h1>何が出るかは、<br><span>運次第。</span></h1>
+
+      <h1>
+        何が出るかは、<br>
+        <span>運次第。</span>
+      </h1>
+
       <p class="intro">
         ガチャを回して、オリジナル楽曲をゲットしよう！
       </p>
     </section>
 
-    <!-- ガチャ本体 -->
-    <section class="gacha-panel">
-      <div class="machine">
-        <div class="machine-label">SPECIAL GACHA</div>
 
-        <div class="capsule" id="capsule">
+    <!-- ================================
+         ガチャ本体
+    ================================= -->
+
+    <section
+      class="gacha-panel"
+      aria-labelledby="gachaTitle"
+    >
+
+      <div class="machine">
+
+        <div class="machine-label">
+          SPECIAL GACHA
+        </div>
+
+        <!-- ガチャカプセル -->
+
+        <div
+          class="capsule"
+          id="capsule"
+          aria-hidden="true"
+        >
           <div class="capsule-top"></div>
           <div class="capsule-bottom"></div>
           <div class="capsule-shine"></div>
         </div>
 
-        <div class="machine-slot">▼ MUSIC SLOT ▼</div>
+        <div class="machine-slot">
+          ▼ MUSIC SLOT ▼
+        </div>
+
       </div>
 
+
+      <!-- ガチャの説明 -->
+
       <div class="gacha-info">
-        <div class="tag">ORIGINAL MUSIC COLLECTION</div>
-        <h2>オリジナル楽曲ガチャ</h2>
+
+        <div class="tag">
+          ORIGINAL MUSIC COLLECTION
+        </div>
+
+        <h2 id="gachaTitle">
+          オリジナル楽曲ガチャ
+        </h2>
+
         <p class="description">
-          何が当たるかはお楽しみ！自作曲との出会いを楽しもう。
+          何が当たるかはお楽しみ！
+          自作曲との出会いを楽しもう。
         </p>
 
-        <div class="price">FREE <span>/ 1 PLAY</span></div>
+        <div class="price">
+          FREE <span>/ 1 PLAY</span>
+        </div>
 
-        <button id="drawButton" class="draw-button" type="button">
-          <span>✦</span> ガチャを回す
+        <button
+          id="drawButton"
+          class="draw-button"
+          type="button"
+        >
+          <span aria-hidden="true">✦</span>
+          ガチャを回す
         </button>
 
         <p class="note">
           ※ 無料デモです。景品は音源データの試聴です。
         </p>
+
       </div>
+
     </section>
 
-    <!-- ガチャ結果 -->
-    <section id="result" class="result hidden">
-      <p class="eyebrow">CONGRATULATIONS!</p>
 
-      <div id="resultRarity" class="rarity">S RANK</div>
+    <!-- ================================
+         ガチャ結果ポップアップ
+    ================================= -->
 
-      <div id="resultEmoji" class="result-emoji">🎸</div>
+    <div
+      id="result"
+      class="result-modal hidden"
+      aria-hidden="true"
+    >
 
-      <h2 id="resultName">楽曲名</h2>
+      <!-- 背景オーバーレイ -->
 
-      <p id="resultDescription">
-        あなたに当たった特別な一曲！
-      </p>
+      <div
+        class="result-overlay"
+        aria-hidden="true"
+      ></div>
 
-      <!-- 当選した曲の再生プレーヤー -->
-      <audio
-        id="resultAudio"
-        controls
-        preload="none"
+
+      <!-- 結果カード -->
+
+      <section
+        class="result-popup"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="resultName"
+        aria-describedby="resultDescription"
       >
-        お使いのブラウザは音声再生に対応していません。
-      </audio>
 
-      <button
-        id="closeResult"
-        class="secondary-button"
-        type="button"
-      >
-        閉じる
-      </button>
-    </section>
+        <!-- 閉じるボタン -->
 
-    <!-- 景品一覧 -->
-    <section class="prizes-section">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">MUSIC COLLECTION</p>
-          <h2>楽曲ラインナップ</h2>
+        <button
+          id="closeResult"
+          class="popup-close"
+          type="button"
+          aria-label="結果画面を閉じる"
+        >
+          ×
+        </button>
+
+
+        <!-- 結果発表タイトル -->
+
+        <p class="popup-announcement">
+          ★★★ RESULT!! ★★★
+        </p>
+
+
+        <!-- レアリティ -->
+
+        <div
+          id="resultRarity"
+          class="rarity"
+        >
+          S RANK
         </div>
 
-        <span id="prizeCount" class="count">全3種類</span>
+
+        <!-- 楽曲ジャケット -->
+
+        <img
+          id="resultCover"
+          class="result-cover"
+          src=""
+          alt=""
+        >
+
+
+        <!-- JavaScript互換用の絵文字 -->
+
+        <div
+          id="resultEmoji"
+          class="result-emoji hidden"
+          aria-hidden="true"
+        >
+          🎸
+        </div>
+
+
+        <!-- 楽曲名 -->
+
+        <h2 id="resultName">
+          楽曲名
+        </h2>
+
+
+        <!-- 楽曲の説明 -->
+
+        <p id="resultDescription">
+          あなたに当たった特別な一曲！
+        </p>
+
+
+        <!-- 音源プレーヤー -->
+
+        <audio
+          id="resultAudio"
+          controls
+          preload="none"
+        >
+          お使いのブラウザは音声再生に対応していません。
+        </audio>
+
+
+        <!-- 結果カードを閉じる -->
+
+        <button
+          id="closeResultBottom"
+          class="popup-bottom-close"
+          type="button"
+        >
+          カードを閉じる！
+        </button>
+
+      </section>
+
+    </div>
+
+
+    <!-- ================================
+         景品一覧
+    ================================= -->
+
+    <section
+      class="prizes-section"
+      aria-labelledby="prizesTitle"
+    >
+
+      <div class="section-heading">
+
+        <div>
+          <p class="eyebrow">
+            MUSIC COLLECTION
+          </p>
+
+          <h2 id="prizesTitle">
+            楽曲ラインナップ
+          </h2>
+        </div>
+
+        <span
+          id="prizeCount"
+          class="count"
+        >
+          全3種類
+        </span>
+
       </div>
 
-      <div id="prizeGrid" class="prize-grid"></div>
+
+      <!-- JavaScriptから景品カードを生成 -->
+
+      <div
+        id="prizeGrid"
+        class="prize-grid"
+        aria-live="polite"
+      ></div>
+
     </section>
 
-    <!-- 獲得履歴 -->
-    <section class="history-section">
-      <h2>最近の獲得履歴</h2>
 
-      <ul id="historyList" class="history-list">
+    <!-- ================================
+         獲得履歴
+    ================================= -->
+
+    <section
+      class="history-section"
+      aria-labelledby="historyTitle"
+    >
+
+      <div class="section-heading">
+
+        <div>
+          <p class="eyebrow">
+            YOUR COLLECTION
+          </p>
+
+          <h2 id="historyTitle">
+            最近の獲得履歴
+          </h2>
+        </div>
+
+      </div>
+
+
+      <!-- JavaScriptから履歴を生成 -->
+
+      <ul
+        id="historyList"
+        class="history-list"
+        aria-live="polite"
+      >
         <li>まだ楽曲を引いていません。</li>
       </ul>
+
+
+      <!-- 履歴リセット -->
 
       <button
         id="clearHistory"
@@ -120,14 +331,34 @@
       >
         履歴をリセット
       </button>
+
     </section>
 
   </main>
 
-  <footer>
-    PRIZE GACHA · ORIGINAL MUSIC EDITION
+
+  <!-- ================================
+       フッター
+  ================================= -->
+
+  <footer class="footer">
+
+    <p>
+      PRIZE GACHA · ORIGINAL MUSIC EDITION
+    </p>
+
+    <p class="footer-sub">
+      MADE WITH MUSIC ✦
+    </p>
+
   </footer>
 
+
+  <!-- ================================
+       JavaScript
+  ================================= -->
+
   <script src="script.js"></script>
+
 </body>
 </html>
