@@ -6,7 +6,7 @@ const prizes = [
     emoji: "🎸",
     description: "レアな一曲！ぜひ聴いてみて！",
     probability: 10,
-    audio: "music/君と羊と青 いなちゃんTRIBUTE.mp3"
+    audio: "music/song1.mp3"
   },
   {
     rank: "A",
@@ -14,7 +14,7 @@ const prizes = [
     emoji: "🎹",
     description: "あなたに届く特別な一曲！",
     probability: 30,
-    audio: "music/まらしま.mp3"
+    audio: "music/song2.mp3"
   },
   {
     rank: "B",
@@ -22,7 +22,7 @@ const prizes = [
     emoji: "🎧",
     description: "新しい音楽との出会い！",
     probability: 60,
-    audio: "music/スネタレウス.mp3"
+    audio: "music/song3.mp3"
   }
 ];
 
